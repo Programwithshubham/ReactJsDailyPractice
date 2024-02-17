@@ -1,36 +1,47 @@
+// Events
 
-import React, { useState } from "react";
+import { useState } from "react"
 
 const App = () => {
-  const [todo, setTodo] = useState([
-    {
-      title: "Todo 1",
-      desc: "i am Shubham",
-    },
-    {
-      title: "Todo 2",
-      desc: "i am lokesh",
-    },
-    {
-      title: "Todo 3",
-      desc: "i am elvish",
-    },
-    {
-      title: "Todo 4",
-      desc: "i am abhishek",
-    },
-  ]);
+  // const [count,setcount]=useState();
+  // const [name, setName] = useState("shubham");
+  const [form, setForm] = useState({email:"",password:""});
+  const handleclick=()=>{
+    console.log("Clicked");
+  }
 
+  // const handlemouseover=()=>{
+  //   alert("Over me");
+  // }
+
+  // const handlechange =(e)=>{
+  //   setName(e.target.value);
+  // }
+
+
+  const handlechanges =(event)=>{
+      setForm({...form,[event.target.name]:event.target.value})
+      console.log(form);
+  } 
   return (
+    <>
     <div>
-      {todo.map((item) => (
-        <div key={item.title}>
-          <div>{item.title}</div>
-          <div>{item.desc}</div>
-        </div>
-      ))}
+      <button onClick={handleclick}>Click</button>
     </div>
-  );
-};
 
-export default App;
+    <div>
+      <h1>Hi I am Div</h1>
+      {/* <p onMouseOver={handlemouseover}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti earum cupiditate officia nemo.</p> */}
+    </div>
+
+
+    <input type="text" name="email" value={form.email} onChange={handlechanges}/>
+    
+    <input type="text" name="password" value={form.password} onChange={handlechanges}/>
+    <br />
+        <button type="submit">Submit</button>
+    </>
+  )
+}
+
+export default App
